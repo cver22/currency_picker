@@ -36,6 +36,8 @@ class Currency {
 
   bool get isFlagImage => flag?.endsWith('.png') ?? false;
 
+  final bool isCustom;
+
   Currency({
     required this.code,
     required this.name,
@@ -48,6 +50,7 @@ class Currency {
     required this.decimalSeparator,
     required this.thousandsSeparator,
     required this.spaceBetweenAmountAndSymbol,
+    this.isCustom = false
   });
 
   Currency.from({required Map<String, dynamic> json})
@@ -61,7 +64,8 @@ class Currency {
         symbolOnLeft = json['symbol_on_left'],
         decimalSeparator = json['decimal_separator'],
         thousandsSeparator = json['thousands_separator'],
-        spaceBetweenAmountAndSymbol = json['space_between_amount_and_symbol'];
+        spaceBetweenAmountAndSymbol = json['space_between_amount_and_symbol'],
+        isCustom = false;
 
   Map<String, dynamic> toJson() => {
         'code': code,
@@ -76,4 +80,34 @@ class Currency {
         'thousands_separator': thousandsSeparator,
         'space_between_amount_and_symbol': spaceBetweenAmountAndSymbol,
       };
+
+  Currency copyWith({
+    String? code,
+    String? name,
+    String? symbol,
+    String? flag,
+    int? number,
+    int? decimalDigits,
+    String? namePlural,
+    String? decimalSeparator,
+    String? thousandsSeparator,
+    bool? symbolOnLeft,
+    bool? spaceBetweenAmountAndSymbol,
+    bool? isCustom,
+  }) {
+    return Currency(
+      code: code ?? this.code,
+      name: name ?? this.name,
+      symbol: symbol ?? this.symbol,
+      flag: flag ?? this.flag,
+      number: number ?? this.number,
+      decimalDigits: decimalDigits ?? this.decimalDigits,
+      namePlural: namePlural ?? this.namePlural,
+      decimalSeparator: decimalSeparator ?? this.decimalSeparator,
+      thousandsSeparator: thousandsSeparator ?? this.thousandsSeparator,
+      symbolOnLeft: symbolOnLeft ?? this.symbolOnLeft,
+      spaceBetweenAmountAndSymbol: spaceBetweenAmountAndSymbol ?? this.spaceBetweenAmountAndSymbol,
+      isCustom: isCustom ?? this.isCustom,
+    );
+  }
 }
