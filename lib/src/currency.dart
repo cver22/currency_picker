@@ -38,34 +38,33 @@ class Currency {
 
   final bool isCustom;
 
-  Currency({
-    required this.code,
-    required this.name,
-    required this.symbol,
-    required this.flag,
-    required this.number,
-    required this.decimalDigits,
-    required this.namePlural,
-    required this.symbolOnLeft,
-    required this.decimalSeparator,
-    required this.thousandsSeparator,
-    required this.spaceBetweenAmountAndSymbol,
-    this.isCustom = false
-  });
+  Currency(
+      {required this.code,
+      required this.name,
+      required this.symbol,
+      required this.flag,
+      required this.number,
+      required this.decimalDigits,
+      required this.namePlural,
+      required this.symbolOnLeft,
+      required this.decimalSeparator,
+      required this.thousandsSeparator,
+      required this.spaceBetweenAmountAndSymbol,
+      this.isCustom = false});
 
   Currency.from({required Map<String, dynamic> json})
-      : code = json['code'],
-        name = json['name'],
-        symbol = json['symbol'],
-        number = json['number'],
-        flag = json['flag'],
-        decimalDigits = json['decimal_digits'],
-        namePlural = json['name_plural'],
-        symbolOnLeft = json['symbol_on_left'],
-        decimalSeparator = json['decimal_separator'],
-        thousandsSeparator = json['thousands_separator'],
-        spaceBetweenAmountAndSymbol = json['space_between_amount_and_symbol'],
-        isCustom = false;
+      : code = json['code'] as String,
+        name = json['name'] as String,
+        symbol = json['symbol'] as String,
+        number = json['number'] as int,
+        flag = json['flag'] as String,
+        decimalDigits = json['decimal_digits'] as int,
+        namePlural = json['name_plural'] as String,
+        symbolOnLeft = json['symbol_on_left'] as bool,
+        decimalSeparator = json['decimal_separator'] as String,
+        thousandsSeparator = json['thousands_separator'] as String,
+        spaceBetweenAmountAndSymbol = json['space_between_amount_and_symbol'] as bool,
+        isCustom = json['isCustom'] as bool;
 
   Map<String, dynamic> toJson() => {
         'code': code,
@@ -79,6 +78,7 @@ class Currency {
         'decimal_separator': decimalSeparator,
         'thousands_separator': thousandsSeparator,
         'space_between_amount_and_symbol': spaceBetweenAmountAndSymbol,
+        'isCustom': isCustom,
       };
 
   Currency copyWith({
