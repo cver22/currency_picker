@@ -50,7 +50,7 @@ class Currency {
       required this.decimalSeparator,
       required this.thousandsSeparator,
       required this.spaceBetweenAmountAndSymbol,
-      this.isCustom = false});
+      this.isCustom = false,});
 
   Currency.from({required Map<String, dynamic> json})
       : code = json['code'] as String,
@@ -64,7 +64,7 @@ class Currency {
         decimalSeparator = json['decimal_separator'] as String,
         thousandsSeparator = json['thousands_separator'] as String,
         spaceBetweenAmountAndSymbol = json['space_between_amount_and_symbol'] as bool,
-        isCustom = json['isCustom'] as bool;
+        isCustom = json['isCustom'] as bool? ?? false;
 
   Map<String, dynamic> toJson() => {
         'code': code,
