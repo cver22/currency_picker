@@ -57,7 +57,7 @@ class Currency {
         name = json['name'] as String,
         symbol = json['symbol'] as String,
         number = json['number'] as int,
-        flag = json['flag'] as String,
+        flag = json['flag'] as String?,
         decimalDigits = json['decimal_digits'] as int,
         namePlural = json['name_plural'] as String,
         symbolOnLeft = json['symbol_on_left'] as bool,
